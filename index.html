@@ -1,77 +1,192 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-cn">
 <head>
-    <meta charset="UTF-8">
-    <title>wuji</title>
-    <style>
-        /*主要样式*/
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        h1 {
-            color: #333;
-            margin-top: 20px;
-        }
-        footer {
-            background-color: #2560cc;
-            color: #fff;
-            text-align: center;
-            padding: 10px 0;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-
-
-/* GitHub*/ 
-.btn {
-  display: grid;
-  place-items: center;
-  background: #e3edf7;
-  padding: 1.4em;
-  border-radius: 10px;
-  box-shadow: 6px 6px 10px -1px rgba(0,0,0,0.15),
-	      -6px -6px 10px -1px rgba(255,255,255,0.7);
-  border: 1px solid rgba(0,0,0,0);
-  cursor: pointer;
-  transition: transform 0.5s;
-}
-
-.btn:hover {
-  box-shadow: inset 4px 4px 6px -1px rgba(0,0,0,0.2),
-	      inset -4px -4px 6px -1px rgba(255,255,255,0.7),
-	      -0.5px -0.5px 0px rgba(255,255,255,1),
-	      0.5px 0.5px 0px rgba(0,0,0,0.15),
-	      0px 12px 10px -10px rgba(0,0,0,0.05);
-  border: 1px solid rgba(0,0,0,0.1);
-  transform: translateY(0.5em);
-}
-
-.btn svg {
-  transition: transform 0.5s;
-}
-
-.btn:hover svg {
-  transform: scale(0.9);
-  fill: #333333;
-}
-    </style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>个人主页</title>
+	<style>
+		body {
+			font-family: 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+			background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+			min-height: 100vh;
+			margin: 0;
+			padding: 0;
+		}
+		.container {
+			max-width: 600px;
+			margin: 40px auto;
+			background: rgba(255,255,255,0.7);
+			border-radius: 24px;
+			box-shadow: 0 8px 32px rgba(57,115,183,0.18);
+			padding: 40px 32px 32px 32px;
+			text-align: center;
+			border: 2px solid transparent;
+			border-image: linear-gradient(90deg,#6dd5ed,#3973b7) 1;
+			backdrop-filter: blur(8px);
+			animation: fadeIn 1.2s;
+		}
+		@keyframes fadeIn {
+			from { opacity: 0; transform: translateY(30px); }
+			to { opacity: 1; transform: translateY(0); }
+		}
+		.avatar {
+			width: 120px;
+			height: 120px;
+			border-radius: 50%;
+			object-fit: cover;
+			margin-bottom: 16px;
+			border: 4px solid #6dd5ed;
+			box-shadow: 0 4px 24px rgba(57,115,183,0.18);
+			transition: box-shadow 0.3s;
+		}
+		.avatar:hover {
+			box-shadow: 0 8px 32px rgba(57,115,183,0.32);
+		}
+		h1 {
+			margin: 0 0 12px 0;
+			font-size: 2.4em;
+			color: #3973b7;
+			letter-spacing: 2px;
+			font-weight: 700;
+		}
+		.desc {
+			color: #3973b7;
+			margin-bottom: 24px;
+			font-size: 1.15em;
+			font-weight: 500;
+		}
+		.info {
+			margin-bottom: 24px;
+		}
+		.info span {
+			display: inline-block;
+			margin: 0 10px;
+			color: #3973b7;
+			background: #e1ecf4;
+			border-radius: 8px;
+			padding: 4px 12px;
+			font-size: 1em;
+		}
+		.skills {
+			margin-bottom: 16px;
+		}
+		.skills span {
+			display: inline-block;
+			background: linear-gradient(90deg,#6dd5ed,#3973b7);
+			color: #fff;
+			border-radius: 16px;
+			padding: 8px 20px;
+			margin: 6px;
+			font-size: 1.05em;
+			font-weight: 500;
+			box-shadow: 0 2px 8px rgba(57,115,183,0.08);
+			transition: transform 0.2s;
+		}
+		.skills span:hover {
+			transform: scale(1.08);
+		}
+		.contact {
+			margin-top: 18px;
+		}
+		.contact a:hover {
+			background: linear-gradient(90deg,#6dd5ed,#3973b7);
+			box-shadow: 0 8px 32px rgba(57,115,183,0.32), 0 1.5px 0 #fff inset;
+			border: 2px solid #fff;
+			transform: scale(1.09) rotate(-2deg);
+			z-index: 1;
+		}
+		.contact a {
+			color: #fff;
+			background: linear-gradient(90deg,#3973b7,#6dd5ed);
+			text-decoration: none;
+			margin: 0 12px;
+			padding: 12px 28px;
+			border-radius: 16px;
+			font-weight: 600;
+			box-shadow: 0 4px 16px rgba(57,115,183,0.18), 0 1.5px 0 #fff inset;
+			border: 2px solid transparent;
+			border-image: linear-gradient(90deg,#6dd5ed,#3973b7) 1;
+			letter-spacing: 2px;
+			font-size: 1.08em;
+			transition: box-shadow 0.3s, transform 0.2s, border 0.3s;
+			display: inline-block;
+		}
+		#time {
+			margin-top: 32px;
+			font-size: 1.18em;
+			color: #fff;
+			background: linear-gradient(90deg, #3973b7 0%, #6dd5ed 100%);
+			padding: 12px 0;
+			border-radius: 12px;
+			box-shadow: 0 2px 8px rgba(57,115,183,0.12);
+			letter-spacing: 2px;
+			font-weight: bold;
+			width: 80%;
+			margin-left: auto;
+			margin-right: auto;
+			border: 2px solid #e1ecf4;
+			animation: fadeIn 1.5s;
+		}
+	</style>
 </head>
 <body>
-    <h1 style="text-align:center;">wuji鸡窝</h1>
-    <!-- github--> 
-    <a href="https://github.com/zxh100861outlook/">
-        <button class="btn">
-        <svg width="40" height="40" fill="#0092E4" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 24 24" id="github">
-            <path d="M12,2.2467A10.00042,10.00042,0,0,0,8.83752,21.73419c.5.08752.6875-.21247.6875-.475,0-.23749-.01251-1.025-.01251-1.86249C7,19.85919,6.35,18.78423,6.15,18.22173A3.636,3.636,0,0,0,5.125,16.8092c-.35-.1875-.85-.65-.01251-.66248A2.00117,2.00117,0,0,1,6.65,17.17169a2.13742,2.13742,0,0,0,2.91248.825A2.10376,2.10376,0,0,1,10.2,16.65923c-2.225-.25-4.55-1.11254-4.55-4.9375a3.89187,3.89187,0,0,1,1.025-2.6875,3.59373,3.59373,0,0,1,.1-2.65s.83747-.26251,2.75,1.025a9.42747,9.42747,0,0,1,5,0c1.91248-1.3,2.75-1.025,2.75-1.025a3.59323,3.59323,0,0,1,.1,2.65,3.869,3.869,0,0,1,1.025,2.6875c0,3.83747-2.33752,4.6875-4.5625,4.9375a2.36814,2.36814,0,0,1,.675,1.85c0,1.33752-.01251,2.41248-.01251,2.75,0,.26251.1875.575.6875.475A10.0053,10.0053,0,0,0,12,2.2467Z"></path>
-        </svg>
-        </button>
-    </a>
-     <footer>
-        <p style="text-align:center;">&copy; 2025 wuji鸡窝</p>
-    </footer>
+	<div class="container">
+		<img class="avatar" src="https://avatars.githubusercontent.com/u/9919?s=200&v=4" alt="头像">
+		<h1>wuji</h1>
+		<div class="desc">一句简短的个人介绍，喜欢编程。</div>
+		<div class="info">
+			<span>城市：江西</span>
+		</div>
+		<div class="skills">
+			<span>HTML</span>
+			<span>CSS</span>
+			<span>python</span>
+			<span>Linux</span>
+		</div>
+		<div class="contact">
+			<a href="zxh100861@outlook.com">邮箱</a>
+			<a href="https://github.com/zxh100861outlook" target="_blank">GitHub</a>
+		</div>
+	<div id="time"></div>
+		<div class="interactive">
+			<h2 style="margin-top:36px;color:#3973b7;font-size:1.3em;">留言互动</h2>
+			<input type="text" id="msgInput" placeholder="写下你的留言..." maxlength="60" style="width:70%;padding:10px 16px;border-radius:8px;border:1.5px solid #6dd5ed;font-size:1em;margin-bottom:12px;box-shadow:0 2px 8px rgba(57,115,183,0.08);outline:none;">
+			<button id="msgBtn" style="padding:10px 28px;border-radius:8px;background:linear-gradient(90deg,#3973b7,#6dd5ed);color:#fff;font-weight:600;border:none;box-shadow:0 2px 8px rgba(57,115,183,0.12);font-size:1em;cursor:pointer;transition:background 0.2s,transform 0.2s;">提交</button>
+			<div id="msgTip" style="margin-top:10px;color:#3973b7;font-size:1em;min-height:24px;"></div>
+		</div>
+	</div>
 </body>
+<script>
+function updateTime() {
+	var now = new Date();
+	var options = {
+		timeZone: 'Asia/Shanghai',
+		year: 'numeric',
+		month: '2-digit',
+		day: '2-digit',
+		hour: '2-digit',
+		minute: '2-digit',
+		second: '2-digit',
+		hour12: false
+	};
+	var shTime = now.toLocaleString('zh-CN', options).replace(/\//g, '-');
+	document.getElementById('time').textContent = `上海时间：${shTime}`;
+}
+setInterval(updateTime, 1000);
+updateTime();
+
+// 简单互动留言功能
+document.getElementById('msgBtn').onclick = function() {
+	var val = document.getElementById('msgInput').value.trim();
+	var tip = document.getElementById('msgTip');
+	if(val.length === 0) {
+		tip.textContent = '请输入留言内容！';
+		tip.style.color = '#e74c3c';
+		return;
+	}
+	tip.textContent = '感谢你的留言：' + val;
+	tip.style.color = '#3973b7';
+	document.getElementById('msgInput').value = '';
+};
+</script>
 </html>
