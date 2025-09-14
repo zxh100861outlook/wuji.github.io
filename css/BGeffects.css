@@ -1,0 +1,313 @@
+﻿
+#particleCanvas {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    z-index: 0; 
+    pointer-events: none;
+    width: 100vw; 
+    height: 100vh; 
+}
+/*标题特效*/
+.colortxt{
+    font-size: 30px;
+    background: linear-gradient(to right, rgb(238, 194, 223), rgb(81, 148, 224));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+/*毛玻璃特效2*/
+.glass-container2{
+    width: 15rem;
+    height: 15rem;
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+        }
+/*装饰物1*/
+.svg-frame {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  transform-style: preserve-3d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.svg-frame svg {
+  position: absolute;
+  transition: .5s;
+  z-index: calc(1 - (0.2 * var(--j)));
+  transform-origin: center;
+  width: 344px;
+  height: 344px;
+  fill: none;
+}
+
+.svg-frame:hover svg {
+  transform: rotate(-80deg) skew(30deg) translateX(calc(45px * var(--i))) translateY(calc(-35px * var(--i)));
+}
+
+.svg-frame svg #center {
+  transition: .5s;
+  transform-origin: center;
+}
+
+.svg-frame:hover svg #center {
+  transform: rotate(-30deg) translateX(45px) translateY(-3px);
+}
+
+#out2 {
+  animation: rotate16 7s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+#out3 {
+  animation: rotate16 3s ease-in-out infinite alternate;
+  transform-origin: center;
+  stroke: #ff0;
+}
+
+#inner3,
+#inner1 {
+  animation: rotate16 4s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+#center1 {
+  fill: #ff0;
+  animation: rotate16 2s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+@keyframes rotate16 {
+  to {
+    transform: rotate(400deg);
+  }
+}
+/*毛玻璃特效3*/
+.glass-container3 {
+            width: 8rem;
+            height: 12.5rem;
+            background-color: rgba(255, 255, 255, 0.15); /* 设置半透明背景色 */
+            backdrop-filter: blur(10px); /* 应用模糊效果 */
+            border-radius: 10px; /* 圆角 */
+            padding: 20px;
+            box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); /* 添加阴影 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-shadow: 2px 2px 2px rgba(0, 27, 77, 0.521); /* 文本阴影 */
+        }
+        @media only screen and (max-width: 786px) {
+            .glass-container {
+                width: 80%;
+                height: 30%;
+            }
+        }
+/*头像*/
+.avatar {
+
+width: 120px;
+height: 120px;
+border-radius: 70%; /* 圆形效果 */
+object-fit: cover; /* 确保图片适配容器 */
+/* 移除 margin-top 和 margin-left 以居中显示 */
+margin-top: -400px
+}
+/*名字*/
+.image-container {
+            text-align: center;
+                 }
+/*头像与名字的间距*/
+.image-name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0;
+}
+
+.avatar-name {
+  margin-top: 0; /* 或者更小，让名字紧贴头像 */
+}
+/*毛玻璃特效4*/
+.glass-container4 {
+            width: 8rem;
+            height: 12.5rem;
+            background-color: rgba(255, 255, 255, 0.15); /* 设置半透明背景色 */
+            backdrop-filter: blur(10px); /* 应用模糊效果 */
+            border-radius: 10px; /* 圆角 */
+            padding: 20px;
+            box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); /* 添加阴影 */
+            position: absolute;
+            left: 4px; /* 固定在左侧 */
+            
+            color: white;
+            text-shadow: 2px 2px 2px rgba(0, 27, 77, 0.521); /* 文本阴影 */
+        }
+        @media only screen and (max-width: 786px) {
+            .glass-container {
+                width: 80%;
+                height: 30%;
+            }
+        }
+/*github图标*/
+/* From Uiverse.io by vinodjangid07 */ 
+.Btn {
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition-duration: .4s;
+  cursor: pointer;
+  position: relative;
+  background-color: rgb(31, 31, 31);
+  overflow: hidden;
+}
+
+.svgIcon {
+  transition-duration: .3s;
+}
+
+.svgIcon path {
+  fill: white;
+}
+
+.text {
+  position: absolute;
+  color: rgb(255, 255, 255);
+  width: 120px;
+  font-weight: 600;
+  opacity: 0;
+  transition-duration: .4s;
+}
+
+.Btn:hover {
+  width: 110px;
+  transition-duration: .4s;
+  border-radius: 30px;
+}
+
+.Btn:hover .text {
+  opacity: 1;
+  transition-duration: .4s;
+}
+
+.Btn:hover .svgIcon {
+  opacity: 0;
+  transition-duration: .3s;
+}
+/*email*/
+/* From Uiverse.io by neerajbaniwal */ 
+.tooltip-container {
+  height: 35px;
+  width: 55px;
+  border-radius: 5px;
+  background-color: #fff;
+  background-image: linear-gradient(
+    to left bottom,
+    #f2f5f8,
+    #ecf1f2,
+    #e7eceb,
+    #e3e7e4,
+    #e1e2de
+  );
+  border: 1px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.151);
+  position: relative;
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+.tooltip-container::before {
+  position: absolute;
+  content: "";
+  top: -50%;
+  clip-path: polygon(50% 0, 0 100%, 100% 100%);
+  border-radius: 5px;
+  background-color: fff;
+  background-image: linear-gradient(
+    to left bottom,
+    #1288ff,
+    #e4eaec,
+    #d8dfde,
+    #cdd3cf,
+    #c5c7c1
+  );
+  width: 100%;
+  height: 50%;
+  transform-style: preserve-3d;
+  transform: perspective(1000px) rotateX(-150deg) translateY(-110%);
+  transition: transform 0.3s ease;
+  z-index: -1;
+}
+
+.tooltip-container .text {
+  color: rgb(32, 30, 30);
+  font-weight: bold;
+  font-size: 40px;
+}
+
+.tooltip {
+  position: absolute;
+  top: -20px;
+  opacity: 0;
+  background: linear-gradient(-90deg, rgba(0, 0, 0, 0.05) 1px, white 1px),
+    linear-gradient(rgba(0, 0, 0, 0.05) 1px, white 1px),
+    linear-gradient(-90deg, rgba(0, 0, 0, 0.04) 1px, white 1px),
+    linear-gradient(rgba(0, 0, 0, 0.04) 1px, white 1px),
+    linear-gradient(white 3px, #f2f2f2 3px, #f2f2f2 78px, white 78px),
+    linear-gradient(-90deg, #aaa 1px, white 1px),
+    linear-gradient(-90deg, white 3px, #f2f2f2 3px, #f2f2f2 78px, white 78px),
+    linear-gradient(#aaa 1px, white 1px), #f2f2f2;
+  background-size: 4px 4px, 4px 4px, 80px 80px, 80px 80px, 80px 80px, 80px 80px,
+    80px 80px, 80px 80px;
+  padding: 5px 10px;
+  border: 1px solid rgb(206, 204, 204);
+
+  height: 35px;
+  width: 55px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition-duration: 0.2s;
+  pointer-events: none;
+  letter-spacing: 0.5px;
+  font-size: 18px;
+  font-weight: 600;
+  text-shadow: 10px salmon;
+  z-index: 2;
+}
+.tooltip-container:hover {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.tooltip-container:hover::before {
+  transform: rotateY(0);
+  background-image: none;
+  background-color: white;
+}
+
+.tooltip-container:hover .tooltip {
+  top: -90px;
+  opacity: 1;
+  transition-duration: 0.3s;
+}
