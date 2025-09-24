@@ -117,8 +117,8 @@
 /*头像*/
 .avatar {
 
-width: 120px;
-height: 120px;
+width: 140px;
+height: 140px;
 border-radius: 70%; /* 圆形效果 */
 object-fit: cover; /* 确保图片适配容器 */
 /* 移除 margin-top 和 margin-left 以居中显示 */
@@ -209,105 +209,35 @@ margin-top: -400px
   opacity: 0;
   transition-duration: .3s;
 }
-/*email*/
-/* From Uiverse.io by neerajbaniwal */ 
-.tooltip-container {
-  height: 35px;
-  width: 55px;
-  border-radius: 5px;
-  background-color: #fff;
-  background-image: linear-gradient(
-    to left bottom,
-    #f2f5f8,
-    #ecf1f2,
-    #e7eceb,
-    #e3e7e4,
-    #e1e2de
-  );
-  border: 1px solid white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.151);
-  position: relative;
-  transition: transform 0.3s ease;
-  z-index: 1;
-}
+/* 简单的邮箱按钮样式*/
+/* 按钮容器 */
+.mail-btn{
+            display:inline-flex;
+            align-items:center;
+            padding:12px 24px;
+            background:linear-gradient(135deg, #4A90E2, #0078D7);
+            color:#fff;
+            font-size:16px;
+            font-weight:600;
+            text-decoration:none;
+            border-radius:30px;
+            box-shadow:0 4px 12px rgba(0,0,0,0.15);
+            transition:transform .15s ease, box-shadow .15s ease;
+        }
 
-.tooltip-container::before {
-  position: absolute;
-  content: "";
-  top: -50%;
-  clip-path: polygon(50% 0, 0 100%, 100% 100%);
-  border-radius: 5px;
-  background-color: fff;
-  background-image: linear-gradient(
-    to left bottom,
-    #1288ff,
-    #e4eaec,
-    #d8dfde,
-    #cdd3cf,
-    #c5c7c1
-  );
-  width: 100%;
-  height: 50%;
-  transform-style: preserve-3d;
-  transform: perspective(1000px) rotateX(-150deg) translateY(-110%);
-  transition: transform 0.3s ease;
-  z-index: -1;
-}
+.mail-btn:hover{
+            transform:translateY(-2px);
+            box-shadow:0 8px 20px rgba(0,0,0,0.2);
+        }
 
-.tooltip-container .text {
-  color: rgb(32, 30, 30);
-  font-weight: bold;
-  font-size: 40px;
-}
+.mail-btn:active{
+            transform:translateY(1px);
+            box-shadow:0 2px 6px rgba(0,0,0,0.1);
+        }
 
-.tooltip {
-  position: absolute;
-  top: -20px;
-  opacity: 0;
-  background: linear-gradient(-90deg, rgba(0, 0, 0, 0.05) 1px, white 1px),
-    linear-gradient(rgba(0, 0, 0, 0.05) 1px, white 1px),
-    linear-gradient(-90deg, rgba(0, 0, 0, 0.04) 1px, white 1px),
-    linear-gradient(rgba(0, 0, 0, 0.04) 1px, white 1px),
-    linear-gradient(white 3px, #f2f2f2 3px, #f2f2f2 78px, white 78px),
-    linear-gradient(-90deg, #aaa 1px, white 1px),
-    linear-gradient(-90deg, white 3px, #f2f2f2 3px, #f2f2f2 78px, white 78px),
-    linear-gradient(#aaa 1px, white 1px), #f2f2f2;
-  background-size: 4px 4px, 4px 4px, 80px 80px, 80px 80px, 80px 80px, 80px 80px,
-    80px 80px, 80px 80px;
-  padding: 5px 10px;
-  border: 1px solid rgb(206, 204, 204);
-
-  height: 35px;
-  width: 55px;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition-duration: 0.2s;
-  pointer-events: none;
-  letter-spacing: 0.5px;
-  font-size: 18px;
-  font-weight: 600;
-  text-shadow: 10px salmon;
-  z-index: 2;
-}
-.tooltip-container:hover {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-
-.tooltip-container:hover::before {
-  transform: rotateY(0);
-  background-image: none;
-  background-color: white;
-}
-
-.tooltip-container:hover .tooltip {
-  top: -90px;
-  opacity: 1;
-  transition-duration: 0.3s;
-}
+        /* 邮件图标（使用 Unicode） */
+.mail-btn::before{
+            content:"✉️";
+            margin-right:8px;
+            font-size:1.2em;
+        }
