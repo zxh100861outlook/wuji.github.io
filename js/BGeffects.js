@@ -1,3 +1,13 @@
+/*加载动画*/
+/* 4️⃣ 当页面全部资源（包括图片、CSS、JS）加载完成后，隐藏遮罩层 */
+window.addEventListener('load', function(){
+    const overlay = document.getElementById('loadingOverlay');
+    overlay.style.opacity = '0';
+    overlay.style.transition = 'opacity 0.5s ease';
+    // 0.5 秒后彻底移除元素，防止遮挡点击
+    setTimeout(()=> overlay.remove(), 500);
+});
+/*粒子*/
 document.addEventListener('DOMContentLoaded', function () {
     class ParticleBackground {
         constructor() {
