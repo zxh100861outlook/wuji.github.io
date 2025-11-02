@@ -27,9 +27,22 @@ body {
 /* 网格布局 */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(4, 1fr); /* 每行 4 个 */
   gap: 24px;
+  justify-items: center;
   padding: 60px 10%;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 /* 卡片样式 */
@@ -163,3 +176,60 @@ body.light .card {
 body.light .card:hover {
   box-shadow: 0 0 15px rgba(100,120,255,0.4);
 }
+/*工具编译器*/
+  :root{
+    --size: 120px;               /* 图标大小 */
+    --left-color: #2A62FF;       /* 左侧深蓝 */
+    --right-color: #42A5F6;      /* 右侧浅蓝 */
+    --overlap-color: rgba(14,60,170,0.22); /* 重叠区域暗影 */
+  }
+
+  body {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: transparent; /* 没有背景色 */
+  }
+
+  .icon {
+    width: var(--size);
+    height: calc(var(--size) * 0.8);
+    position: relative;
+  }
+
+  .diamond {
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    left: 20%;
+    top: 20%;
+    border-radius: 18%;
+    transform: rotate(45deg);
+  }
+
+  .diamond.left {
+    background: var(--left-color);
+    z-index: 3;
+    transform: translate(-6%, -3%) rotate(45deg);
+  }
+
+  .diamond.right {
+    background: var(--right-color);
+    z-index: 2;
+    transform: translate(12%, 6%) rotate(45deg);
+  }
+
+  .diamond.overlap {
+    background: var(--overlap-color);
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    left: 20%;
+    top: 20%;
+    border-radius: 18%;
+    transform: translate(4%, 1.5%) rotate(45deg);
+    z-index: 2.5;
+    pointer-events: none;
+  }
