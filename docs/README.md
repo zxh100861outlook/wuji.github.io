@@ -1,52 +1,42 @@
 ## wj1	hello,world
 
-这是第一篇文章
+这是一个开始
 
-hello,world
+## wj2  github clone 加速
 
-## wj2	c语言
+在平日里在github上看到好玩的项目想clone下来却发现clone速度慢到离谱！
 
-导入标准输入输出库
+有时甚至只有几十KB每秒这样的速度很容易把我们给气死.
 
-```c
-#include <stdio.h>
+我来帮你解决这个问题.
+
+其实十分简单只需要配置全局替换规则,就像这样.
+
+```bash
+git config --global url."填一个镜像站".insteadOf "https://github.com/"
 ```
 
-写下整个程序入口main将它归为int并加入void参数
+哪镜像站该如何获取呢?我推荐几个.
 
-> [!NOTE]
->
-> int是整数的意思,void参数指的是无参数
+### gh-proxy.org(富哥可以给这位活佛捐点https://gh-proxy.com/donate/)
 
-```c
-int main(void) {}
+```
+git config --global url."https://gh-proxy.org/https://github.com/".insteadOf "https://github.com/"
 ```
 
-然后在这个入口中加入printf和return就可以了
+### Fastly CDN
 
-> [!NOTE]
->
-> printf表打印的意思,return表返回在后面加个0表示程序执行完了
-
-```c
-printf("hello,world");
-return 0;
+```
+git config --global url."https://cdn.gh-proxy.org/https://github.com/".insteadOf "https://github.com/"
 ```
 
-这样就得到一个野生的hello,world
+### **(链接🔗来源：https://gh-proxy.com/  活佛🐮🍺好用)**
 
-```c
-#include <stdio.h>
+### 注意事项(别人站长给出的注意事项!)
 
-int main(void) {
-printf("hello,world");
-return 0;
-}
-```
-
-编译后输出
-
-```shell
-hello,world
-```
-
+* 本服务仅供学习研究使用
+* 请勿滥用，否则可能会被限制访问
+* 如果遇到问题，请检查链接格式是否正确
+* 建议收藏本站，以便日后使用
+* 转换工具会自动更新，无需手动升级
+* 选择最适合您网络环境的区域节点
