@@ -47,3 +47,7 @@ git config --global url."https://cdn.gh-proxy.org/https://github.com/".insteadOf
 [![This Website is Powered by DigitalPlat FreeDomain Get a free domain from DigitalPlat.](https://img.shields.io/badge/DigitalPlat-Get%20a%20free%20domain%20from%20DigitalPlat.-2563eb?style=flat-square&logo=databricks&logoColor=ffffff)](https://dash.domain.digitalplat.org/signup?ref=IP47Bkcu1M)
 
 这是一个免费域名的项目当然它不是我的注册它需要github账号
+你也可以使用我的邀请链接来注册
+```
+https://dash.domain.digitalplat.org/signup?ref=IP47Bkcu1M
+```
