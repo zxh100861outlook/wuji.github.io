@@ -1,332 +1,148 @@
-/* 字体与全局 */
+/* ==========================
+   通用样式
+========================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", "Helvetica Neue", sans-serif;
+}
+
 body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  color: #eaeaea;
-  background: #0a0a0a;
-  overflow-x: hidden;
+    background-color: #f4f1ed; /* 淡棕灰背景 */
+    color: #5a4a3f; /* 稳定深棕文字 */
+    line-height: 1.6;
 }
 
-/* 动态渐变背景 */
-.gradient-bg {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: linear-gradient(120deg, #2b1055, #7597de, #5b2a86);
-  background-size: 300% 300%;
-  animation: gradientShift 10s ease infinite;
-  z-index: -1;
+/* ==========================
+   容器
+========================== */
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* ==========================
+   头部导航
+========================== */
+header {
+    background-color: #8b7d6b; /* 棕灰稳重色 */
+    padding: 20px 0;
 }
 
-/* 侧边栏 */
-/* 🍸 磨砂玻璃导航栏 */
-.sidebar {
-  width: 230px;
-  height: 100vh;
-  position: fixed;
-  left: 0;
-  top: 0;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-right: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 6px 0 25px rgba(0, 0, 0, 0.4);
-  transition: width 0.4s ease, background 0.3s ease;
-  overflow-y: auto;
+header h1 {
+    display: inline-block;
+    color: #f4f1ed;
 }
 
-/* 🌈 光影流动动画层 */
-.sidebar::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -50%;
-  width: 200%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    rgba(255, 255, 255, 0.18) 0%,
-    rgba(255, 255, 255, 0.05) 25%,
-    rgba(255, 255, 255, 0.18) 50%,
-    rgba(255, 255, 255, 0.05) 75%,
-    rgba(255, 255, 255, 0.18) 100%
-  );
-  animation: glassFlow 12s linear infinite;
-  pointer-events: none;
-  border-radius: inherit;
-  opacity: 0.45;
-  z-index: 1;
+header nav {
+    float: right;
 }
 
-@keyframes glassFlow {
-  0% { transform: translateX(-25%) rotate(0deg); }
-  50% { transform: translateX(25%) rotate(0deg); }
-  100% { transform: translateX(-25%) rotate(0deg); }
+header nav ul {
+    list-style: none;
 }
 
-/* 确保内容层级正常 */
-.sidebar * {
-  position: relative;
-  z-index: 2;
+header nav ul li {
+    display: inline-block;
+    margin-left: 20px;
 }
 
-/* 🪩 鼠标悬停时光泽增强 */
-.sidebar:hover {
-  background: rgba(255, 255, 255, 0.12);
-  box-shadow: 8px 0 30px rgba(0, 0, 0, 0.45);
-  transition: all 0.4s ease;
+header nav ul li a {
+    text-decoration: none;
+    color: #f4f1ed;
+    font-weight: bold;
+    transition: color 0.3s;
 }
 
-/* ☀️ 亮色模式 */
-body.light .sidebar {
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(20px) saturate(200%);
-  -webkit-backdrop-filter: blur(20px) saturate(200%);
-  border-right: 1px solid rgba(0, 0, 0, 0.1);
-}
-body.light .sidebar:hover {
-  background: rgba(255, 255, 255, 0.75);
-  box-shadow: 8px 0 25px rgba(0, 0, 0, 0.1);
+header nav ul li a:hover {
+    color: #d9cbb6;
 }
 
-
-.sidebar.collapsed { width: 70px; }
-
-.sidebar .container {
-  text-align: center;
-  padding: 20px 0;
+/* ==========================
+   Banner
+========================== */
+.banner {
+    text-align: center;
+    padding: 80px 0;
+    background-color: #a6907c; /* 浅棕灰 */
 }
 
-.sidebar .avatar {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  border: 2px solid rgba(255,255,255,0.2);
+.banner h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
 }
 
-.sidebar p {
-  margin-top: 10px;
-  font-weight: 600;
+.banner p {
+    font-size: 1.2rem;
 }
 
-/* 链接 */
-.sidebar a {
-  display: flex;
-  align-items: center;
-  padding: 12px 20px;
-  color: #ccc;
-  text-decoration: none;
-  transition: background 0.3s, color 0.3s;
+/* ==========================
+   关于我 / 博客 / 联系
+========================== */
+.about, .blog, .contact {
+    padding: 60px 0;
 }
 
-.sidebar a:hover {
-  background: rgba(255,255,255,0.1);
-  color: #fff;
+h2 {
+    color: #5a4a3f;
+    margin-bottom: 20px;
 }
 
-.sidebar a.active {
-  background: rgba(255,255,255,0.15);
-  color: #fff;
+/* ==========================
+   文章列表
+========================== */
+.posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
 }
 
-.sidebar a i {
-  margin-right: 12px;
-  font-size: 18px;
-}
-
-.sidebar.collapsed a span {
-  display: none;
-}
-
-.sidebar.collapsed p {
-  display: none;
-}
-
-/* 折叠按钮 */
-.toggle-btn {
-  position: fixed;
-  top: 20px;
-  left: 250px;
-  background: rgba(255,255,255,0.15);
-  color: #fff;
-  border: none;
-  padding: 10px 14px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-  z-index: 1000;
-}
-
-.sidebar.collapsed + .toggle-btn {
-  left: 90px;
-}
-
-.toggle-btn:hover {
-  background: rgba(255,255,255,0.3);
-  transform: scale(1.05);
-}
-
-/* 主内容 */
-.content {
-  margin-left: 250px;
-  padding: 40px;
-  transition: margin-left 0.4s ease;
-}
-
-.sidebar.collapsed ~ .content {
-  margin-left: 90px;
-}
-
-.content h1 {
-  font-size: 2.2em;
-  margin-bottom: 20px;
-}
-
-.content h2 {
-  margin-top: 40px;
-  font-size: 1.5em;
-  color: #a5c9ff;
-}
-
-.project-link {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 10px 18px;
-  background: rgba(255,255,255,0.1);
-  border-radius: 8px;
-  color: #eaeaea;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.project-link:hover {
-  background: rgba(255,255,255,0.3);
-  transform: translateY(-3px);
-}
-
-/* GitHub 按钮 */
-.github-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 10px;
-  padding: 12px 20px;
-  border-radius: 10px;
-  background: rgba(255,255,255,0.1);
-  color: #fff;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.github-button:hover {
-  background: rgba(255,255,255,0.25);
-  transform: scale(1.05);
-}
-
-/* 响应式 */
-@media (max-width: 768px) {
-  .sidebar {
-    position: absolute;
-    z-index: 999;
-  }
-  .content {
-    margin-left: 0;
+.post {
+    background-color: #e0d8cf; /* 浅棕灰卡片 */
     padding: 20px;
-  }
-  .toggle-btn {
-    left: 20px;
-  }
-}
-/* 🌗 日夜模式切换按钮 */
-.theme-toggle {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(6px);
-  color: #fff;
-  font-size: 20px;
-  box-shadow: 0 0 12px rgba(0,0,0,0.3);
-  transition: all 0.3s ease;
-  z-index: 999;
-}
-.theme-toggle:hover {
-  transform: scale(1.1);
-  background: rgba(255,255,255,0.3);
+    border-radius: 8px;
 }
 
-/* ☀️ 亮色模式 */
-body.light {
-  background: #f4f6fb;
-  color: #222;
-}
-body.light .gradient-bg {
-  background: linear-gradient(120deg, #c1d8ff, #ffffff, #d2e3ff);
-}
-body.light .sidebar {
-  background: rgba(255,255,255,0.7);
-  color: #222;
-}
-body.light .sidebar a {
-  color: #333;
-}
-body.light .sidebar a:hover {
-  background: rgba(0,0,0,0.05);
-}
-body.light .content h2 {
-  color: #4b6aff;
-}
-body.light .project-link,
-body.light .github-button {
-  background: rgba(0,0,0,0.05);
-  color: #222;
-}
-body.light .project-link:hover,
-body.light .github-button:hover {
-  background: rgba(0,0,0,0.15);
-}
-/* 🍏 灵动岛提示条 */
-.dynamic-island {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%) scale(0.9);
-  background: rgba(255, 255, 255, 0.12);
-  color: #fff;
-  padding: 10px 24px;
-  border-radius: 24px;
-  backdrop-filter: blur(10px);
-  font-weight: 500;
-  font-size: 0.95em;
-  opacity: 0;
-  transition: all 0.4s ease;
-  pointer-events: none;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-  z-index: 1000;
+.post h3 {
+    color: #5a4a3f;
+    margin-bottom: 10px;
 }
 
-/* 出现时的状态 */
-.dynamic-island.show {
-  opacity: 1;
-  transform: translateX(-50%) scale(1);
+/* ==========================
+   联系方式
+========================== */
+.contact p {
+    font-size: 1rem;
 }
 
-/* ☀️ 亮色主题下调整 */
-body.light .dynamic-island {
-  background: rgba(0, 0, 0, 0.07);
-  color: #111;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+/* ==========================
+   页脚
+========================== */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #8b7d6b;
+    color: #f4f1ed;
+}
+
+/* ==========================
+   响应式布局
+========================== */
+@media (max-width: 768px) {
+    header nav {
+        float: none;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    header nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .banner h2 {
+        font-size: 2rem;
+    }
 }
