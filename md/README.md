@@ -34,7 +34,7 @@ git config --global url."https://cdn.gh-proxy.org/https://github.com/".insteadOf
 
 ### 注意事项(别人站长给出的注意事项!)
 
-## * 本服务仅供学习研究使用
+## 本服务仅供学习研究使用
 
 * 请勿滥用，否则可能会被限制访问
 * 如果遇到问题，请检查链接格式是否正确
