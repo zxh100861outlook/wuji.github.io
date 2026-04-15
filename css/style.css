@@ -77,7 +77,16 @@ header nav ul li a:hover {
 .banner p {
     font-size: 1.2rem;
 }
-
+/* ==========================
+   头像
+========================== */
+/* 设置头像为方形 */
+.wuji {
+    width: 100px;         /* 设置宽度 */
+    height: 100px;        /* 设置高度 */
+    object-fit: cover;    /* 保证图片按比例填充容器 */
+    border: 3px solid #fff;  /* 可选：为头像添加一个白色边框 */
+}
 /* ==========================
    关于我 / 博客 / 联系
 ========================== */
@@ -102,14 +111,17 @@ h2 {
 .post {
     background-color: #e0d8cf; /* 浅棕灰卡片 */
     padding: 20px;
-    border-radius: 8px;
+    /* 确保去除圆角 */
+    border-radius: 0 !important; /* 使用 !important 提高优先级 */
+    /* 去除可能的边框和阴影 */
+    border: none;
+    box-shadow: none;
 }
 
-.post h3 {
+.post h2 {
     color: #5a4a3f;
     margin-bottom: 10px;
 }
-
 /* ==========================
    联系方式
 ========================== */
