@@ -109,7 +109,7 @@ h2 {
 }
 
 .post {
-    background-color: #e0d8cf; /* 浅棕灰卡片 */
+    background-color: #8b7d6b; /* 浅棕灰卡片 */
     padding: 20px;
     /* 确保去除圆角 */
     border-radius: 0 !important; /* 使用 !important 提高优先级 */
@@ -119,7 +119,7 @@ h2 {
 }
 
 .post h2 {
-    color: #5a4a3f;
+    color: #f4f1ed;
     margin-bottom: 10px;
 }
 /* ==========================
@@ -157,4 +157,28 @@ footer {
     .banner h2 {
         font-size: 2rem;
     }
+}
+
+/* ==========================
+   通用按钮样式 (不冲突)
+   使用类名 `.btn` 以避免覆盖其他链接样式
+========================== */
+.btn {
+    display: inline-block;
+    padding: 10px 16px;
+    background-color: #8b7d6b; /* 与 header/footer 保持一致 */
+    color: #f4f1ed; /* 与页面浅色文字一致 */
+    text-decoration: none;
+    border-radius: 0; /* 去除圆角 */
+    font-weight: 600;
+    border: 1px solid rgba(0,0,0,0.06);
+}
+
+.btn:hover {
+    background-color: #a6907c; /* 悬停仅改变颜色，无位移动画 */
+}
+
+.btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(139,125,107,0.18); /* 保留键盘可见焦点，但无动画 */
 }
