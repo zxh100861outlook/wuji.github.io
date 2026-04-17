@@ -1,3 +1,7 @@
+# 文章
+
+这里收录我写的东西。
+
 ## wj1	hello,world
 
 这是一个开始
@@ -49,3 +53,5 @@ git config --global url."https://cdn.gh-proxy.org/https://github.com/".insteadOf
 这是一个免费域名的项目当然它不是我的注册它需要github账号
 你也可以使用我的邀请链接来注册
 https://dash.domain.digitalplat.org/signup?ref=IP47Bkcu1M
+
+> 更多文章持续更新中...

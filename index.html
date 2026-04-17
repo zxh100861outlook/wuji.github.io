@@ -1,73 +1,38 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的个人主页</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>我的个人主页</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <!-- 顶部导航 -->
-    <header>
-        <div class="container">
-            <h1>我的个人主页</h1>
-            <nav>
-                <ul>
-                    <li><a href="#home">首页</a></li>
-                    <li><a href="#about">关于我</a></li>
-                    <li><a href="#blog">文章</a></li>
-                    <li><a href="#contact">联系</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+  <header>
+    <div class="header-inner">
+      <span class="site-title">我的个人主页</span>
+      <nav>
+        <a href="#" onclick="loadDoc('home.md')">首页</a>
+        <a href="#" onclick="loadDoc('about.md')">关于我</a>
+        <a href="#" onclick="loadArticles()">文章</a>
+        <a href="#" onclick="loadDoc('contact.md')">联系</a>
+      </nav>
+      <button class="menu-toggle" onclick="toggleMenu()" aria-label="菜单">☰</button>
+    </div>
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="#" onclick="loadDoc('home.md');toggleMenu()">首页</a>
+      <a href="#" onclick="loadDoc('about.md');toggleMenu()">关于我</a>
+      <a href="#" onclick="loadArticles();toggleMenu()">文章</a>
+      <a href="#" onclick="loadDoc('contact.md');toggleMenu()">联系</a>
+    </nav>
+  </header>
 
-    <!-- 首页 Banner -->
-    <section id="home" class="banner">
-        <div class="container">
-	    <img src="img/wuji.png" alt="zxhwuji" class="wuji">
-	    <h3>wuji<h3>
-            <h2>欢迎来到我的主页</h2>
-            <p>简洁,稳重才是未来</p>
-        </div>
-    </section>
+  <main id="main">
+    <div class="content-card" id="content">
+      <p style="color:#888;text-align:center;">加载中...</p>
+    </div>
+  </main>
 
-    <!-- 关于我 -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2>关于我</h2>
-            <p>我认为linux会超过windows我坚信会有这一天😆</p>
-            <a class="btn" href="https://github.com/zxh100861outlook" target="_blank" rel="noopener noreferrer">我的github主页</a>
-        </div>
-    </section>
-
-    <!-- 文章列表 -->
-    <section id="blog" class="blog">
-        <a href="wen.html">
-            <div class="container">
-                <div class="posts">
-                    <article class="post">
-			<h2>个人博客<h2>
-                        <p>我会写点东西然后扔进去</p>
-                    </article>
-                </div>
-            </div>
-        </a>
-    </section>
-
-    <!-- 联系方式 -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>联系方式</h2>
-            <p>电子邮件：zxh100861@outlook.com</p>
-        </div>
-    </section>
-
-    <!-- 页脚 -->
-    <footer>
-        <div class="container">
-            <p>© 2026 我的个人主页. 保留所有权利.</p>
-        </div>
-    </footer>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
