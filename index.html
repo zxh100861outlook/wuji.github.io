@@ -11,18 +11,18 @@
     <div class="header-inner">
       <span class="site-title">我的个人主页</span>
       <nav>
-        <a href="#" onclick="loadDoc('home.md')">首页</a>
-        <a href="#" onclick="loadDoc('about.md')">关于我</a>
-        <a href="#" onclick="loadArticles()">文章</a>
-        <a href="#" onclick="loadDoc('contact.md')">联系</a>
+        <a href="javascript:void(0)" onclick="navigate('home.md')">首页</a>
+        <a href="javascript:void(0)" onclick="navigate('about.md')">关于我</a>
+        <a href="javascript:void(0)" onclick="navigate('articles.md')">文章</a>
+        <a href="javascript:void(0)" onclick="navigate('contact.md')">联系</a>
       </nav>
       <button class="menu-toggle" onclick="toggleMenu()" aria-label="菜单">☰</button>
     </div>
     <nav class="mobile-nav" id="mobileNav">
-      <a href="#" onclick="loadDoc('home.md');toggleMenu()">首页</a>
-      <a href="#" onclick="loadDoc('about.md');toggleMenu()">关于我</a>
-      <a href="#" onclick="loadArticles();toggleMenu()">文章</a>
-      <a href="#" onclick="loadDoc('contact.md');toggleMenu()">联系</a>
+      <a href="javascript:void(0)" onclick="navigate('home.md');toggleMenu()">首页</a>
+      <a href="javascript:void(0)" onclick="navigate('about.md');toggleMenu()">关于我</a>
+      <a href="javascript:void(0)" onclick="navigate('articles.md');toggleMenu()">文章</a>
+      <a href="javascript:void(0)" onclick="navigate('contact.md');toggleMenu()">联系</a>
     </nav>
   </header>
 
@@ -33,6 +33,9 @@
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script src="app.js"></script>
+  <script>
+    marked.setOptions({ breaks: true });
+  </script>
+  <script src="app.js?v=2"></script>
 </body>
 </html>

@@ -56,35 +56,37 @@ async function loadDoc(file, anchor) {
 }
 
 // ── 加载文章侧边栏 ──
-async function loadArticles() {
+async function loadArticles(anchor) {
   try {
     const res = await fetch('docs/articles.json');
     const list = await res.json();
 
-    // 构建两栏布局
-    mainEl.innerHTML = '';
-    const sidebar = document.createElement('aside');
-    sidebar.className = 'sidebar';
-    sidebar.innerHTML = '<strong class="sidebar-title">文章列表</strong>';
+    // 构建两栏布局（避免重复创建）
+    if (!mainEl.querySelector('.two-col')) {
+      mainEl.innerHTML = '';
+      const sidebar = document.createElement('aside');
+      sidebar.className = 'sidebar';
+      sidebar.innerHTML = '<strong class="sidebar-title">文章列表</strong>';
 
-    const ul = document.createElement('ul');
-    list.forEach(item => {
-      const li = document.createElement('li');
-      li.innerHTML = `<a href="#" onclick="loadDoc('${item.file}','${item.anchor}');return false;">${item.title}</a>`;
-      ul.appendChild(li);
-    });
-    sidebar.appendChild(ul);
+      const ul = document.createElement('ul');
+      list.forEach(item => {
+        const li = document.createElement('li');
+        // 侧边栏链接同时更新 hash，方便分享
+        li.innerHTML = `<a href="#" onclick="navigate('${item.file}','${item.anchor}');return false;">${item.title}</a>`;
+        ul.appendChild(li);
+      });
+      sidebar.appendChild(ul);
 
-    const wrapper = document.createElement('div');
-    wrapper.className = 'two-col';
-    wrapper.appendChild(sidebar);
-    wrapper.appendChild(contentEl);
-    mainEl.appendChild(wrapper);
+      const wrapper = document.createElement('div');
+      wrapper.className = 'two-col';
+      wrapper.appendChild(sidebar);
+      wrapper.appendChild(contentEl);
+      mainEl.appendChild(wrapper);
+    }
 
-    // 默认加载整篇文章
-    loadDoc('articles.md');
+    loadDoc('articles.md', anchor);
   } catch (e) {
-    loadDoc('articles.md');
+    loadDoc('articles.md', anchor);
   }
 }
 
@@ -99,5 +101,48 @@ function toggleMenu() {
   document.getElementById('mobileNav').classList.toggle('open');
 }
 
-// 默认加载首页
-loadDoc('home.md');
+// ── 导航函数：更新 hash 并直接加载 ──
+function navigate(file, anchor) {
+  console.log('[navigate]', file, anchor);
+  const hash = anchor ? `${file}/${anchor}` : file;
+  history.pushState(null, '', '#' + hash);
+  if (file === 'articles.md') {
+    loadArticles(anchor);
+  } else {
+    loadDoc(file, anchor);
+  }
+}
+
+// ── 解析 URL hash 决定初始页面 ──
+function loadFromHash() {
+  const hash = decodeURIComponent(location.hash.slice(1));
+  if (!hash) { loadDoc('home.md'); return; }
+
+  const slashIdx = hash.indexOf('/');
+  const file   = slashIdx === -1 ? hash : hash.slice(0, slashIdx);
+  const anchor = slashIdx === -1 ? null  : hash.slice(slashIdx + 1);
+
+  // 纯锚点（无 .md）：如果页面已有内容就滚动，否则当作文章锚点加载
+  if (!file.endsWith('.md')) {
+    const el = document.getElementById(hash);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // 页面还没内容，先加载文章再跳锚点
+      loadArticles(hash);
+    }
+    return;
+  }
+
+  if (file === 'articles.md') {
+    loadArticles(anchor);
+  } else {
+    loadDoc(file, anchor);
+  }
+}
+
+// 监听 hash 变化（浏览器前进/后退）
+window.addEventListener('hashchange', loadFromHash);
+
+// 初始加载
+loadFromHash();
