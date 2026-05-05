@@ -54,4 +54,10 @@ git config --global url."https://cdn.gh-proxy.org/https://github.com/".insteadOf
 你也可以使用我的邀请链接来注册
 https://dash.domain.digitalplat.org/signup?ref=IP47Bkcu1M
 
+## wj3
+
+简约的桌面可以提高人的工作效率，我想是这么一回事。但niko太可爱了所以我把桌面换掉了![1777962901561](images/articles/1777962901561.png)
+简约是什么？瞥了，好看才是这台电脑一辈子的事。还有好多东西可以改有点肝。
+
 > 更多文章持续更新中...
+
