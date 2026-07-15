@@ -39,6 +39,15 @@ async function loadDoc(file, anchor) {
     if (!res.ok) throw new Error('文件未找到');
     const md = await res.text();
     contentEl.innerHTML = marked.parse(md);
+    
+    // 修复图片路径：为相对路径添加 docs/ 前缀
+    contentEl.querySelectorAll('img').forEach(img => {
+      const src = img.getAttribute('src');
+      if (src && !src.startsWith('http') && !src.startsWith('/')) {
+        img.src = 'docs/' + src.replace(/^\.\//, '');
+      }
+    });
+    
     buildTOC();
 
     if (anchor) {
