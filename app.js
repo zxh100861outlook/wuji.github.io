@@ -40,12 +40,18 @@ async function loadDoc(file, anchor) {
     const md = await res.text();
     contentEl.innerHTML = marked.parse(md);
     
-    // 修复图片路径：为相对路径添加 docs/ 前缀
+    // 修复图片路径：为相对路径添加 docs/ 前缀，但首页头像例外
     contentEl.querySelectorAll('img').forEach(img => {
       const src = img.getAttribute('src');
-      if (src && !src.startsWith('http') && !src.startsWith('/')) {
-        img.src = 'docs/' + src.replace(/^\.\//, '');
+      if (!src || src.startsWith('http') || src.startsWith('/')) return;
+
+      const normalizedSrc = src.replace(/^\.\//, '');
+      if (file === 'home.md' && normalizedSrc === 'wuji.png') {
+        img.src = src;
+        return;
       }
+
+      img.src = 'docs/' + normalizedSrc;
     });
     
     buildTOC();
